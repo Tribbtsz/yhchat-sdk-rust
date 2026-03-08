@@ -1,5 +1,3 @@
-pub const BASE_URL: &str = "https://chat-go.jwzhd.com/open-apis/v1";
-
 pub mod recv_type {
     pub const USER: &str = "user";
     pub const GROUP: &str = "group";

@@ -89,8 +89,9 @@ impl EventHandler for MyEventHandler {
 
 #[tokio::main]
 async fn main() {
-    let token = "your_token";
-    let client = YhChatClient::new(token);
+    let token = "YOUR_BOT_TOKEN";
+    let base_url = "https://api.yhchat.com/open-apis/v1";
+    let client = YhChatClient::new(token, base_url);
     let handler = Arc::new(MyEventHandler { _client: client });
     
     // 使用事件分发器
@@ -110,11 +111,12 @@ use yhchat_sdk_core::YhChatClient;
 
 #[tokio::main]
 async fn main() {
-    let token = "your_token";
-    let client = YhChatClient::new(token);
+    let token = "YOUR_BOT_TOKEN";
+    let base_url = "https://api.yhchat.com/open-apis/v1";
+    let client = YhChatClient::new(token, base_url);
     
     // 发送文本消息
-    match client.send_msg_text("user", "user_id", "Hello!").await {
+    match client.send_msg_text("user", "YOUR_USER_ID", "Hello!").await {
         Ok(resp) => println!("Success: {:?}", resp),
         Err(e) => println!("Error: {}", e),
     }
@@ -126,22 +128,25 @@ async fn main() {
 在demo中修改以下配置：
 
 ```rust
-let token = "f34b55307b394117ba110883bdf2a260"; // 机器人Token
-let user_id = "9140925";  // 用户ID
-let group_id = "741947930"; // 群ID
-let bot_id = "92416686"; // 机器人ID
+let token = "YOUR_BOT_TOKEN";  // 机器人Token
+let base_url = "https://api.yhchat.com/open-apis/v1"; // API基础URL
+let user_id = "YOUR_USER_ID";  // 用户ID
+let group_id = "YOUR_GROUP_ID"; // 群ID
+let bot_id = "YOUR_BOT_ID"; // 机器人ID
 ```
 
 ## API基础URL
 
 ```
-https://chat-go.jwzhd.com/open-apis/v1
+https://api.yhchat.com/open-apis/v1
 ```
 
-## 测试用的回调地址
+## 回调地址配置
+
+配置你的机器人回调地址，例如：
 
 ```
-https://f545-2406-da18-10-2c00-bb5f-fa68-6699-1b4d.ngrok-free.app/yhchat/event/msg
+https://your-domain.com/yhchat/event/msg
 ```
 
 ## 参考

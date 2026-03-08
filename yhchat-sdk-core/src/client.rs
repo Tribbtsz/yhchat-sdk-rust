@@ -1,4 +1,3 @@
-use crate::constants::BASE_URL;
 use crate::types::*;
 use reqwest::Client;
 use thiserror::Error;
@@ -23,19 +22,7 @@ pub struct YhChatClient {
 }
 
 impl YhChatClient {
-    pub fn new(token: &str) -> Self {
-        let client = Client::builder()
-            .timeout(std::time::Duration::from_secs(60))
-            .build()
-            .unwrap();
-        Self {
-            client,
-            token: token.to_string(),
-            base_url: BASE_URL.to_string(),
-        }
-    }
-
-    pub fn with_base_url(token: &str, base_url: &str) -> Self {
+    pub fn new(token: &str, base_url: &str) -> Self {
         let client = Client::builder()
             .timeout(std::time::Duration::from_secs(60))
             .build()
